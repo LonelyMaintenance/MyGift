@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 package web;
 
@@ -46,25 +46,24 @@ public class NewFriendTransactionServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String friend = null;
             friend = request.getParameter("emailReceiver");
-            String amount=null;
+            String amount = null;
             amount = request.getParameter("amount");
-            String alias=null; 
+            String alias = null;
             alias = request.getParameter("alias");
-System.out.println("Give to "+friend);
-
+            System.out.println("Give to " + friend);
 
             callAdminTransactionNewUserBean(friend, amount, alias);
-            if((amount!=null && !amount.isEmpty())&&(alias!=null && !alias.isEmpty())){
-              RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-            // RequestDispatcher rdServlet = request.getRequestDispatcher("BookTripFormHandler");
-           // request.setAttribute("message", "Exchange rate ");
-            request.setAttribute("message", "Money transfered to your friend");
-            rd.forward(request, response);
-        }else{
-                              RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-            request.setAttribute("message", "Transfer did not go through");
-            //request.setAttribute("login", login);
-            rd.forward(request, response);
+            if ((amount != null && !amount.isEmpty()) && (alias != null && !alias.isEmpty())) {
+                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                // RequestDispatcher rdServlet = request.getRequestDispatcher("BookTripFormHandler");
+                // request.setAttribute("message", "Exchange rate ");
+                request.setAttribute("message", "Money transfered to your friend");
+                rd.forward(request, response);
+            } else {
+                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                request.setAttribute("message", "Transfer did not go through");
+                //request.setAttribute("login", login);
+                rd.forward(request, response);
             }
         }
     }
@@ -107,11 +106,12 @@ System.out.println("Give to "+friend);
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-   private void callAdminTransactionNewUserBean(String email, String amount, String alias){
-       Random rn = new Random();
+
+    private void callAdminTransactionNewUserBean(String email, String amount, String alias) {
+        Random rn = new Random();
 
         AdminTransactionBean arb = new AdminTransactionBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
-        arb.init();  
+        arb.init();
         int password = rn.nextInt(1000);
         arb.insertNewUserStatement(email, Float.valueOf(amount), password, false, false, alias);
         arb.closeConnection();

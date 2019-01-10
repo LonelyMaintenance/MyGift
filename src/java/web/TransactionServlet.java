@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 package web;
 
@@ -19,6 +19,7 @@ import java.util.Scanner;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -29,6 +30,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "TransactionServlet", urlPatterns = {"/TransactionServlet"})
 public class TransactionServlet extends HttpServlet {
+
+    String friend = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,29 +47,42 @@ public class TransactionServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String amount=null;
+            String amount = null;
             amount = request.getParameter("amount");
-            String alias=null; 
+            String alias = null;
             alias = request.getParameter("alias");
-Scanner scanner = new Scanner( new File("chosenFriend.txt"), "UTF-8" );
-String friend = scanner.useDelimiter("\\A").next();
-scanner.close(); // Put this call in a finally block
 
-System.out.println("Give to "+friend);
+            //Hämta friend från cookie
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if (cookie.getName().contains("receiver")) {
+                        this.friend = cookie.getValue();
+                        //Tömm cookie på friends
+                        Cookie friendCookie = new Cookie(cookie.getName(), "");
+                        //setting cookie to expiry in 30 mins
+                        friendCookie.setMaxAge(0);
+                        response.addCookie(friendCookie);
 
+                    }
 
-            callAdminTransactionExistingUserBean(friend, amount, alias);
-            if((amount!=null && !amount.isEmpty())&&(alias!=null && !alias.isEmpty())){
-              RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-            // RequestDispatcher rdServlet = request.getRequestDispatcher("BookTripFormHandler");
-           // request.setAttribute("message", "Exchange rate ");
-            request.setAttribute("message", "Money transfered to your friend");
-            rd.forward(request, response);
-        }else{
-                              RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-            request.setAttribute("message", "Transfer did not go through");
-            //request.setAttribute("login", login);
-            rd.forward(request, response);
+                }
+
+                System.out.println("Give to " + friend);
+
+                callAdminTransactionExistingUserBean(friend, amount, alias);
+                if ((amount != null && !amount.isEmpty()) && (alias != null && !alias.isEmpty())) {
+                    RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                    // RequestDispatcher rdServlet = request.getRequestDispatcher("BookTripFormHandler");
+                    // request.setAttribute("message", "Exchange rate ");
+                    request.setAttribute("message", "Money transfered to your friend");
+                    rd.forward(request, response);
+                } else {
+                    RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                    request.setAttribute("message", "Transfer did not go through");
+                    //request.setAttribute("login", login);
+                    rd.forward(request, response);
+                }
             }
         }
     }
@@ -109,11 +125,12 @@ System.out.println("Give to "+friend);
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    private void callAdminTransactionExistingUserBean(String emailReceiver, String amount, String alias){
-       Random rn = new Random();
+
+    private void callAdminTransactionExistingUserBean(String emailReceiver, String amount, String alias) {
+        Random rn = new Random();
 
         AdminTransactionBean arb = new AdminTransactionBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
-        arb.init();  
+        arb.init();
         float giftAmount = Float.valueOf(amount);
         int password = rn.nextInt(1000);
         arb.insertExistingUserStatement(emailReceiver, giftAmount, password, false, false, alias);

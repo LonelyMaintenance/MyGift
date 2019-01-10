@@ -1,28 +1,30 @@
 package web;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
-
 /**
  *
  * @author nikolaj
  */
 public class Gift {
-        private String id;
-	private String amount;
-        private String giftTaker;
-	private String giver;
-	public Gift() {
-	}
-	public Gift(String id, String amount, String giftTaker, String giver) {
-                this.id = id;
-		this.amount = amount;
-                this.giftTaker = giftTaker;
-		this.giver = giver;
-	}
+
+    private String id;
+    private String amount;
+    private String giftTaker;
+    private String giver;
+
+    public Gift() {
+    }
+
+    public Gift(String id, String amount, String giftTaker, String giver) {
+        this.id = id;
+        this.amount = amount;
+        this.giftTaker = giftTaker;
+        this.giver = giver;
+    }
 
     public String getId() {
         return id;
@@ -31,14 +33,14 @@ public class Gift {
     public void setId(String id) {
         this.id = id;
     }
-        
-        
-	public String getAmount() {
-		return amount;
-	}
-	public void setAmount(String amount) {
-		this.amount = amount;
-	}
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
 
     public String getGiftTaker() {
         return giftTaker;
@@ -47,16 +49,17 @@ public class Gift {
     public void setGiftTaker(String giftTaker) {
         this.giftTaker = giftTaker;
     }
-        
-        
-	public String getGiver() {
-		return giver;
-	}
-	public void setGiver(String giver) {
-		this.giver = giver;
-	}
-	@Override
-	public String toString() {
-		return this.amount;
-	}
+
+    public String getGiver() {
+        return giver;
+    }
+
+    public void setGiver(String giver) {
+        this.giver = giver;
+    }
+
+    @Override
+    public String toString() {
+        return this.amount;
+    }
 }

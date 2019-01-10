@@ -14,6 +14,7 @@
         <title>Login</title>
     </head>
     <body>
+        <h1>Collect your gifts!</h1>
           <form action="LoginServlet" method="POST">
             Login<input type="text" name="login" value="" /><br>
             Password <input type="text" name="password" value="" /><br>

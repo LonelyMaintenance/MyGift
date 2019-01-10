@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 package bean;
 
@@ -23,40 +23,37 @@ import javax.ejb.Stateless;
  */
 @Stateless
 public class AdminTransactionBean {
-        Connection con;
+
+    Connection con;
     PreparedStatement stmt;
-            Statement searchStmt;
+    Statement searchStmt;
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    
     //In the real world, this method should have madtoe a call to database objects to query data
-   
-    public void init(){
-         try {    
+    public void init() {
+        try {
             Class.forName("com.mysql.jdbc.Driver");
             this.con = DriverManager.getConnection("jdbc:mysql://localhost/mygift?autoReconnect=true&useSSL=false", "root", "root");
         } catch (ClassNotFoundException ex) {
         } catch (SQLException ex) {
         }
     }
-   
-    public void activateGift(String idOfGift, String giftTaker, String amount) throws SQLException{
+
+    public void activateGift(String idOfGift, String giftTaker, String amount) throws SQLException {
         this.stmt = (PreparedStatement) con.prepareStatement("UPDATE gift SET activated=1 WHERE id=?;");
-            stmt.setInt(1, Integer.valueOf(idOfGift));
-            stmt.executeUpdate();
+        stmt.setInt(1, Integer.valueOf(idOfGift));
+        stmt.executeUpdate();
 
-            this.stmt = (PreparedStatement) con.prepareStatement("UPDATE giftTaker SET moneyOnAccount=moneyOnAccount+? WHERE email=?;");
-            stmt.setFloat(1, Float.valueOf(amount));
-            stmt.setString(2, giftTaker);
-            stmt.executeUpdate();
-        
-            
-
+        this.stmt = (PreparedStatement) con.prepareStatement("UPDATE giftTaker SET moneyOnAccount=moneyOnAccount+? WHERE email=?;");
+        stmt.setFloat(1, Float.valueOf(amount));
+        stmt.setString(2, giftTaker);
+        stmt.executeUpdate();
 
     }
-    public void insertExistingUserStatement(String email, float amount, int password, boolean isAdmin, boolean isInactive, String alias){
-        try{
+
+    public void insertExistingUserStatement(String email, float amount, int password, boolean isAdmin, boolean isInactive, String alias) {
+        try {
             //Creates new customer account
             this.stmt = (PreparedStatement) con.prepareStatement("UPDATE giftTaker SET moneyOnAccount=moneyOnAccount+? WHERE email=?;");
             stmt.setFloat(1, amount);
@@ -73,25 +70,25 @@ public class AdminTransactionBean {
             stmt.setString(3, email);
             stmt.setString(4, alias);
             stmt.executeUpdate();
-            
 
         } catch (SQLException ex) {
         }
     }
-    public void withdrawFromUserStatement(String email, String amount){
-        try{
+
+    public void withdrawFromUserStatement(String email, String amount) {
+        try {
             //Creates new customer account
             this.stmt = (PreparedStatement) con.prepareStatement("UPDATE giftTaker SET moneyOnAccount=moneyOnAccount-? WHERE email=?;");
             stmt.setFloat(1, Float.valueOf(amount));
             stmt.setString(2, email);
             stmt.executeUpdate();
-    
+
         } catch (SQLException ex) {
         }
     }
-    
-    public void insertNewUserStatement(String email, float amount, int password, boolean isAdmin, boolean isInactive, String alias){
-        try{
+
+    public void insertNewUserStatement(String email, float amount, int password, boolean isAdmin, boolean isInactive, String alias) {
+        try {
             //Creates new customer account
             this.stmt = (PreparedStatement) con.prepareStatement("INSERT INTO giftTaker VALUES(?,?,?,?,?);");
             stmt.setString(1, email);
@@ -111,13 +108,12 @@ public class AdminTransactionBean {
             stmt.setString(3, email);
             stmt.setString(4, alias);
             stmt.executeUpdate();
-            
 
         } catch (SQLException ex) {
         }
     }
-    
-    public void closeConnection(){
+
+    public void closeConnection() {
         try {
             stmt.close();
             con.close();

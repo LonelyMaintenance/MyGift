@@ -9,18 +9,18 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                 <link rel="stylesheet" href="styles.css">
-
+        <link rel="stylesheet" href="styles.css">
+        
         <title>Send gift to friend</title>
     </head>
     <body>
-          <form action="TransactionServlet" method="POST">
+        <form action="TransactionServlet" method="POST">
             Your friends email  <input type="text" name="emailReiver" value="" /><br>
             Amount to give <input type="text" name="amount" value="" /><br>
             Your alias <input type="text" name="alias" value="" /><br>
             <input type="submit" value="Give" name="submit" />
         </form>
-
-                    <% out.println("<b>"+request.getAttribute("message") + "</b>"); %>
+        
+        <% out.println("<b>"+request.getAttribute("message") + "</b>"); %>
     </body>
 </html>

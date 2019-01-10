@@ -54,42 +54,37 @@ public final class transactionlist_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("        <link rel=\"stylesheet\" href=\"styles.css\">\n");
+      out.write("\n");
       out.write("        <title>Transaction list</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <h1>List of transactions</h1>\n");
-      out.write("   \n");
-  
-    // <option value="1">1</option>
-   // <option value="2">2</option>
-   // <option value="3">3</option>
-    
-//int m=obj.cube(5);  
-//out.print("cube of 5 is "+m);
-AdminGiftBean e = new AdminGiftBean();
-e.init();
-ArrayList<String> tList = e.getTransactionsStatement();
-e.closeConnection();
-
-
-for(int i = 0; i < tList.size(); i++){
-    out.print("<h3>");
-    out.print(tList.get(i));
-    out.print("</h3><br>");
-}
-
-
-      out.write("  \n");
       out.write("\n");
+      out.write("        ");
+
+            AdminGiftBean e = new AdminGiftBean();
+            e.init();
+            ArrayList<String> tList = e.getTransactionsStatement();
+            e.closeConnection();
+
+            for (int i = 0; i < tList.size(); i++) {
+                out.print(tList.get(i));
+                out.print("<br><br>");
+            }
+
+        
       out.write("  \n");
+      out.write("        <a href=\"logout.jsp\">Log out</a>\n");
+      out.write("\n");
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
       out.write("\n");
-      out.write("    ");
       out.write("\n");
-      out.write("  \n");
-      out.write("           \n");
-      out.write("     \n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("</body>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

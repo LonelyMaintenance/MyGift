@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 package web;
 
@@ -37,7 +37,7 @@ public class TransactionListServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TransactionListServlet</title>");            
+            out.println("<title>Servlet TransactionListServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet TransactionListServlet at " + request.getContextPath() + "</h1>");
