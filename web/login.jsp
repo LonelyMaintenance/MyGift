@@ -18,19 +18,19 @@
             .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
             .fa-anchor,.fa-coffee {font-size:200px}
         </style>
-        <title>Login Page</title>
+        <title>MyGift Login Page</title>
     </head>
     <body>
         <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-            <h1 class="w3-margin w3-jumbo">Events.com Login</h1>
-        <form action="LoginServlet" method="POST">
-            <label>Login</label><br>
-            <input type="text" name="login" value="" /><br>
-            <label>Password</label><br>
-            <input type="text" name="password" value="" /><br>
-            <input type="submit" value="Login" name="submit" />
-        </form>
-            <% //out.println("<b>" + request.getAttribute("message") + "</b>");%>
+            <h1 class="w3-margin w3-jumbo">MyGift Login</h1>
+          <form action="LoginServlet" method="POST">
+              <label>Login</label><br>
+              <input type="text" name="login" value="" /><br>
+              <label>Password</label><br>
+              <input type="text" name="password" value="" /><br>
+              <input type="submit" value="Login" name="submit" />
+          </form>
+            <% //out.println("<b>"+request.getAttribute("message") + "</b>"); %>
         </header>
         <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
             <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
