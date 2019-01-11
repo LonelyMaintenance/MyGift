@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/kat/NetBeansProjects/MyGift/src/java/bean/AdminTransactionBean.java</file>
-            <file>file:/home/kat/NetBeansProjects/MyGift/web/accounthistory.jsp</file>
-            <file>file:/home/kat/NetBeansProjects/MyGift/web/logout.jsp</file>
+            <file>file:/home/kat/NetBeansProjects/MyGift/src/java/web/GiftServlet.java</file>
+            <file>file:/home/kat/NetBeansProjects/MyGift/web/giftlist.jsp</file>
             <file>file:/home/kat/NetBeansProjects/MyGift/web/menucustomer.jsp</file>
-            <file>file:/home/kat/NetBeansProjects/MyGift/src/java/bean/GiftsBean.java</file>
-            <file>file:/home/kat/NetBeansProjects/MyGift/src/java/bean/LoginBean.java</file>
+            <file>file:/home/kat/NetBeansProjects/MyGift/web/login.jsp</file>
         </group>
     </open-files>
 </project-private>
