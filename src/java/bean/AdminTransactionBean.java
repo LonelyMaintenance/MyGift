@@ -26,6 +26,7 @@ public class AdminTransactionBean {
 
     Connection con;
     PreparedStatement stmt;
+    Statement qstmt;
     Statement searchStmt;
 
     // Add business logic below. (Right-click in editor and choose
@@ -112,6 +113,23 @@ public class AdminTransactionBean {
         } catch (SQLException ex) {
         }
     }
+    public float getAccountValueStatement(String email) {
+        float accountValue = 0;
+
+        try {
+            this.qstmt = con.createStatement();
+            ResultSet resultSet = qstmt.executeQuery("SELECT moneyOnAccount FROM giftTaker WHERE email='" + email + "'");
+            while (resultSet.next()) {
+                accountValue = resultSet.getFloat(1);
+            }
+            qstmt.close();
+            con.close();
+
+        } catch (SQLException ex) {
+        }
+        return accountValue;
+    }
+
 
     public void closeConnection() {
         try {
@@ -121,3 +139,4 @@ public class AdminTransactionBean {
         }
     }
 }
+

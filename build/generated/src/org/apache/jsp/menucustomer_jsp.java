@@ -3,8 +3,9 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import bean.AdminTransactionBean;
 
-public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class menucustomer_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -44,38 +45,45 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Lato\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Montserrat\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n");
-      out.write("        <style>\n");
-      out.write("            body,h1,h2,h3,h4,h5,h6 {font-family: \"Lato\", sans-serif}\n");
-      out.write("            .w3-bar,h1,button {font-family: \"Montserrat\", sans-serif}\n");
-      out.write("            .fa-anchor,.fa-coffee {font-size:200px}\n");
-      out.write("        </style>\n");
-      out.write("        <title>MyGift Login Page</title>\n");
+      out.write("        <title>Menu Customer</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <header class=\"w3-container w3-red w3-center\" style=\"padding:128px 16px\">\n");
-      out.write("            <h1 class=\"w3-margin w3-jumbo\">MyGift Login</h1>\n");
-      out.write("          <form action=\"LoginServlet\" method=\"POST\">\n");
-      out.write("              <label>Login</label><br>\n");
-      out.write("              <input type=\"text\" name=\"login\" value=\"\" /><br>\n");
-      out.write("              <label>Password</label><br>\n");
-      out.write("              <input type=\"text\" name=\"password\" value=\"\" /><br>\n");
-      out.write("              <input type=\"submit\" value=\"Login\" name=\"submit\" />\n");
-      out.write("          </form>\n");
-      out.write("            ");
- //out.println("<b>"+request.getAttribute("message") + "</b>"); 
+      out.write("        <h1>Menu Customer</h1>\n");
+      out.write("        ");
+
+            String email = null;
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    
+                    if (cookie.getName().contains("user")) {
+                        email =  cookie.getValue();
+            AdminTransactionBean agb = new AdminTransactionBean();
+            agb.init();
+            float accountValue = agb.getAccountValueStatement(email);
+            
+            out.println(String.format("Money on you account %s<br><br>", String.valueOf(accountValue)));
+
+                    
+
+                }
+            }
+            }
+            
+            
       out.write("\n");
-      out.write("        </header>\n");
-      out.write("        <footer class=\"w3-container w3-padding-64 w3-center w3-opacity\">  \n");
-      out.write("            <p>Powered by <a href=\"https://www.w3schools.com/w3css/default.asp\" target=\"_blank\">w3.css</a></p>\n");
-      out.write("        </footer>\n");
+      out.write("        \n");
+      out.write("        <a href=\"accounthistory.jsp\">View history of gifts given to you</a><br>\n");
+      out.write("        <a href=\"friendlist.jsp\">Give a gift to a friend</a><br>\n");
+      out.write("        <a href=\"giftlist.jsp\">Cash in gifts</a><br>\n");
+      out.write("        <a href=\"index.html\">Main page</a><br>\n");
+      out.write("        <a href=\"logout.jsp\">Log out</a><br>\n");
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

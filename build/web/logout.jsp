@@ -1,7 +1,7 @@
 <%-- 
     Document   : logout
     Created on : Jan 9, 2019, 9:09:05 PM
-    Author     : kat
+    Author     : nikolaj
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

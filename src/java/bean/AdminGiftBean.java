@@ -123,6 +123,34 @@ public class AdminGiftBean {
 
         return list;
     }
+    
+    public ArrayList<String> getTransactionsHistory(String email) throws SQLException {
+        ArrayList<String> list = new ArrayList<>();
+
+        try {
+            this.stmt = con.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT * FROM gift WHERE giftTaker_email='"+email+"';");
+            String amount = "test";
+  
+            String friendName = "test";
+
+            while (resultSet.next()) {
+                if (resultSet != null) {
+                    amount = resultSet.getString(2);
+                    friendName = resultSet.getString(5);
+
+                    list.add(String.format("%s kr sent from %s", amount, friendName));
+                }
+            }
+            stmt.close();
+
+        } catch (SQLException ex) {
+            System.err.println(new java.util.Date() + " : " + ex.getMessage());
+        }
+
+        return list;
+    }
+
 
     public void closeConnection() {
         try {
