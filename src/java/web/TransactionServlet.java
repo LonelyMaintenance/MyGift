@@ -58,6 +58,9 @@ public class TransactionServlet extends HttpServlet {
                 for (Cookie cookie : cookies) {
                     if (cookie.getName().contains("receiver")) {
                         this.friend = cookie.getValue();
+                                       System.out.println("Give to " + friend);
+
+                callAdminTransactionExistingUserBean(friend, amount, alias);
                         //Tömm cookie på friends
                         Cookie friendCookie = new Cookie(cookie.getName(), "");
                         //setting cookie to expiry in 30 mins
@@ -68,9 +71,7 @@ public class TransactionServlet extends HttpServlet {
 
                 }
 
-                System.out.println("Give to " + friend);
-
-                callAdminTransactionExistingUserBean(friend, amount, alias);
+ 
                 if ((amount != null && !amount.isEmpty()) && (alias != null && !alias.isEmpty())) {
                     RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                     // RequestDispatcher rdServlet = request.getRequestDispatcher("BookTripFormHandler");

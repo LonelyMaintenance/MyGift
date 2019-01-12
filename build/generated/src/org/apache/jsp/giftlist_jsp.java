@@ -89,7 +89,13 @@ public final class giftlist_jsp extends org.apache.jasper.runtime.HttpJspBase
             GiftsBean e = new GiftsBean();
             List<Gift> list = event.getData();
             out.println("<body>");
-            out.println("<h1>Activate a gift!</h1>");
+            out.println("<h1>Got any gifts?</h1>");
+                                                  out.println("<a href=\"index.html\">Get back to main</a><br>");
+            out.println("<a href=\"logout.jsp\">Log out</a><br><br><br>");
+            out.println("</body>");
+           
+ 
+            
             for (int i = 0; i < list.size(); i++) {
 
                 out.println("<td>");
@@ -99,9 +105,7 @@ public final class giftlist_jsp extends org.apache.jasper.runtime.HttpJspBase
                 out.println("</td><br>");
 
             }
-            out.println("<a href=\"index.html\">Get back to main</a>");
-            out.println("<a href=\"logout.jsp\">Log out</a>");
-            out.println("</body>");
+
         } catch (IndexOutOfBoundsException e) {
             out.println("<body>");
 
@@ -113,6 +117,16 @@ public final class giftlist_jsp extends org.apache.jasper.runtime.HttpJspBase
             out.println("</header>");
             out.println("</body>");
 
+        }catch(Exception e){
+              out.println("<body>");
+
+            out.println("<td>");
+            out.println("<span>");
+            out.println("<h1>No records available</h1>");
+            out.println("</span>");
+            out.println("</td><br>");
+            out.println("</header>");
+            out.println("</body>");
         }
     
       out.write("  \n");

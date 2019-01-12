@@ -24,8 +24,6 @@
         <header class="w3-container w3-red w3-center" style="padding:128px 16px">
             <h1 class="w3-margin w3-jumbo">Gift a friend</h1>
           <form action="TransactionServlet" method="POST">
-              <label>Your friends email</label><br>
-              <input type="text" name="emailReiver" value="" /><br>
               <label>Amount to give</label><br>
               <input type="text" name="amount" value="" /><br>
               <label>Your alias</label><br>

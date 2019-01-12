@@ -47,12 +47,14 @@ public class FriendServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        String chosen = (String) request.getAttribute("item");
-
-        Cookie receiverCookie = new Cookie(("receiver"), chosen);
-        //setting cookie to expiry in 30 mins
-        receiverCookie.setMaxAge(30 * 60);
-        response.addCookie(receiverCookie);
+        String chosenUser = (String) request.getAttribute("item");
+        
+        
+                
+                Cookie friendCookie = new Cookie(("receiver"), chosenUser);
+                //setting cookie to expiry in 30 mins
+                friendCookie.setMaxAge(30 * 60);
+                response.addCookie(friendCookie);
 
         RequestDispatcher rd = request.getRequestDispatcher("transaction.jsp");
         rd.forward(request, response);

@@ -4,6 +4,12 @@
 * and open the template in the editor.
  */
 package bean;
+/*
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
+ */
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -34,13 +40,17 @@ public class GiftsBean implements Serializable {
     GiftList chosen;
 
     public GiftsBean() throws SQLException, FileNotFoundException {
-
+try{
         this.giftList = getGiftList();
         loadData();
         // select the first item in the list
         this.g = data.get(0);
         setGift(g.getAmount());
         setMessage(String.format("%s from %s selected", g.getAmount(), g.getGiver()));
+}catch(IndexOutOfBoundsException e){
+            setMessage("No gifts for you");
+
+}
     }
 
     private void loadData() {
@@ -130,11 +140,7 @@ public class GiftsBean implements Serializable {
             System.out.println(giftList.get(i).getAmount());
         }
         agb.closeConnection();
-        try{
         this.chosen = giftList.get(0);
-        }catch(IndexOutOfBoundsException i){
-            
-        }
         return giftList;
 
     }
