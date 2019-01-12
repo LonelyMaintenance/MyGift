@@ -83,9 +83,9 @@ e.closeConnection();
 
 
 for(int i = 0; i < tList.size(); i++){
-    out.print("<h3>");
+    out.print("<p>");
     out.print(tList.get(i));
-    out.print("</h3><br>");
+    out.print("</p>");
 }
 
 

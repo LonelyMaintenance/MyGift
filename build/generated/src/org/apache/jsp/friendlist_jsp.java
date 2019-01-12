@@ -105,6 +105,8 @@ public final class friendlist_jsp extends org.apache.jasper.runtime.HttpJspBase
                 
       out.write("  \n");
       out.write("        </body>\n");
+      out.write("                <br><br><br><a href=\"transactionnewuser.jsp\">Give a gift to a new user</a>        \n");
+      out.write("\n");
       out.write("        </header>\n");
       out.write("        <footer class=\"w3-container w3-padding-64 w3-center w3-opacity\">  \n");
       out.write("            <p>Powered by <a href=\"https://www.w3schools.com/w3css/default.asp\" target=\"_blank\">w3.css</a></p>\n");

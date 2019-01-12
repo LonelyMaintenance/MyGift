@@ -28,6 +28,8 @@ public class LoginBean {
     Statement stmt;
     String correctPassword = null;
     String adminMail = null;
+        boolean isAdmin = false;
+
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
 
@@ -61,6 +63,29 @@ public class LoginBean {
         }
         return false;
     }
+
+    public boolean checkIfAdmin(String email) {
+
+        try {
+            this.stmt = con.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT isAdmin from giftTaker where email='"+email+"';");
+            
+            while (resultSet.next()) {
+                if (resultSet != null) {
+                    this.isAdmin = resultSet.getBoolean(1);
+                    if (isAdmin==true) {
+                        return true;
+                    }
+                    
+                }
+                
+            }
+        } catch (SQLException ex) {
+            System.err.println(new java.util.Date() + " : " + ex.getMessage());
+        }
+        return false;
+    }
+    
 
     public void closeConnection() {
         try {

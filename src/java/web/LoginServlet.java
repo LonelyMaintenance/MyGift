@@ -53,8 +53,9 @@ public class LoginServlet extends HttpServlet {
                 //setting cookie to expiry in 30 mins
                 receiverCookie.setMaxAge(30 * 60);
                 response.addCookie(receiverCookie);
-
+                if(checkIfAdmin(login)==false){
                 RequestDispatcher red = request.getRequestDispatcher("menucustomer.jsp");
+                
                 try{
                 red.forward(request, response);
                 }catch(Exception e){
@@ -62,7 +63,20 @@ public class LoginServlet extends HttpServlet {
                 request.setAttribute("message", "Error logging in");
                 //request.setAttribute("login", login);
                 re.forward(request, response);
-                    
+
+                    }
+                } else {
+                    RequestDispatcher red = request.getRequestDispatcher("menuadmin.jsp");
+
+                    try {
+                        red.forward(request, response);
+                    } catch (Exception e) {
+                        RequestDispatcher re = request.getRequestDispatcher("login.jsp");
+                        request.setAttribute("message", "Error logging in");
+                        //request.setAttribute("login", login);
+                        re.forward(request, response);
+
+                }
                 }
             } else {
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
@@ -120,6 +134,16 @@ public class LoginServlet extends HttpServlet {
         lb.closeConnection();
 
         return check;
+    }
+    
+    private boolean checkIfAdmin(String email) {
+
+        LoginBean lb = new LoginBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
+        lb.init();
+        boolean admin = lb.checkIfAdmin(email);
+        lb.closeConnection();
+
+        return admin;
     }
 
 }

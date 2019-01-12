@@ -26,6 +26,9 @@
     <body>
         <header class="w3-container w3-red w3-center">
             <h1 class="w3-margin w3-jumbo w3-left-align">List of Transactions</h1>
+            
+                    <a href="menuadmin.jsp">Back to Admin Menu</a><br>
+
    
 <%  
     // <option value="1">1</option>
@@ -41,9 +44,9 @@ e.closeConnection();
 
 
 for(int i = 0; i < tList.size(); i++){
-    out.print("<h3>");
+    out.print("<p>");
     out.print(tList.get(i));
-    out.print("</h3><br>");
+    out.print("</p>");
 }
 
 %>  

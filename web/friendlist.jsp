@@ -53,6 +53,8 @@
 
                 %>  
         </body>
+                <br><br><br><a href="transactionnewuser.jsp">Give a gift to a new user</a>        
+
         </header>
         <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
             <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
