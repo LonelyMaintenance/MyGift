@@ -51,28 +51,14 @@ public class TransactionServlet extends HttpServlet {
             amount = request.getParameter("amount");
             String alias = null;
             alias = request.getParameter("alias");
+            String friend = null;
+            friend = request.getParameter("friend");
 
-            //Hämta friend från cookie
-            Cookie[] cookies = request.getCookies();
-            if (cookies != null) {
-                for (Cookie cookie : cookies) {
-                    if (cookie.getName().contains("receiver")) {
-                        this.friend = cookie.getValue();
-                                       System.out.println("Give to " + friend);
-
+     
                 callAdminTransactionExistingUserBean(friend, amount, alias);
-                        //Tömm cookie på friends
-                        Cookie friendCookie = new Cookie(cookie.getName(), "");
-                        //setting cookie to expiry in 30 mins
-                        friendCookie.setMaxAge(0);
-                        response.addCookie(friendCookie);
-
-                    }
-
-                }
-
+     
  
-                if ((amount != null && !amount.isEmpty()) && (alias != null && !alias.isEmpty())) {
+                if ((amount != null && !amount.isEmpty()) && (alias != null && !alias.isEmpty()) && (friend != null && !friend.isEmpty())) {
                     RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                     // RequestDispatcher rdServlet = request.getRequestDispatcher("BookTripFormHandler");
                     // request.setAttribute("message", "Exchange rate ");
@@ -86,7 +72,7 @@ public class TransactionServlet extends HttpServlet {
                 }
             }
         }
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -114,7 +100,33 @@ public class TransactionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+                  /* TODO output your page here. You may use following sample code. */
+        response.setContentType("text/html;charset=UTF-8");
+
+                  String amount = null;
+            amount = request.getParameter("amount");
+            String alias = null;
+            alias = request.getParameter("alias");
+            String friend = null;
+            friend = request.getParameter("friend");
+
+     
+                callAdminTransactionExistingUserBean(friend, amount, alias);
+     
+ 
+                if ((amount != null && !amount.isEmpty()) && (alias != null && !alias.isEmpty()) && (friend != null && !friend.isEmpty())) {
+                    RequestDispatcher rd = request.getRequestDispatcher("giftgiven.jsp");
+                    // RequestDispatcher rdServlet = request.getRequestDispatcher("BookTripFormHandler");
+                    // request.setAttribute("message", "Exchange rate ");
+         //           request.setAttribute("message", "Money transfered to your friend");
+                    rd.forward(request, response);
+                } else {
+                    RequestDispatcher rd = request.getRequestDispatcher("gifterror.jsp");
+         //           request.setAttribute("message", "Transfer did not go through");
+                    //request.setAttribute("login", login);
+                    rd.forward(request, response);
+                }
+           
     }
 
     /**

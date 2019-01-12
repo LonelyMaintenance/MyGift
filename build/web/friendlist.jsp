@@ -29,8 +29,6 @@
     <body>
         <header class="w3-container w3-red w3-center" style="padding:128px 16px">
             <h1 class="w3-margin w3-jumbo">Pick a friend!</h1>
-        <form action="FriendServlet" method="POST">
-            <select name="item">
 
 
                 <%
@@ -43,18 +41,18 @@
                     FriendsBean e = new FriendsBean();
                     List<Friend> list = event.getData();
 
-                    for (int i = 0; i < list.size(); i++) {
-                        out.print("<option value=\"" + i + "\">");
-                        out.print(list.get(i).getName());
-                        out.print("</option>");
-                    }
+           for (int i = 0; i < list.size(); i++) {
 
-                    out.print("</option>");
+                out.println("<td>");
+                out.println("<span>");
+                out.println("<a href=\"transaction.jsp?taker="+list.get(i).getName()+" \">"+list.get(i).getName()+"</a>");
+                out.println("</span>");
+                out.println("</td><br>");
+
+            }
+
                 %>  
-            </select>
-
-            <input type="submit" value="Submit">
-        </form>
+        </body>
         </header>
         <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
             <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
