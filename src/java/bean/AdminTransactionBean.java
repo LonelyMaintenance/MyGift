@@ -93,21 +93,10 @@ public class AdminTransactionBean {
             //Creates new customer account
             this.stmt = (PreparedStatement) con.prepareStatement("INSERT INTO giftTaker VALUES(?,?,?,?,?);");
             stmt.setString(1, email);
-            stmt.setFloat(2, amount);
+            stmt.setFloat(2, 0);
             stmt.setString(3, String.valueOf(password));
-            stmt.setBoolean(4, isAdmin);
-            stmt.setBoolean(5, isInactive);
-            stmt.executeUpdate();
-            //Creates alias
-            this.stmt = (PreparedStatement) con.prepareStatement("INSERT INTO giftGiver VALUES(?);");
-            stmt.setString(1, alias);
-            stmt.executeUpdate();
-            //Creates gift
-            this.stmt = (PreparedStatement) con.prepareStatement("INSERT INTO gift(amount, activated, giftTaker_email, giftGiver_alias) VALUES(?, ?, ?, ?);");
-            stmt.setFloat(1, amount);
-            stmt.setBoolean(2, false);
-            stmt.setString(3, email);
-            stmt.setString(4, alias);
+            stmt.setBoolean(4, false);
+            stmt.setBoolean(5, false);
             stmt.executeUpdate();
 
         } catch (SQLException ex) {

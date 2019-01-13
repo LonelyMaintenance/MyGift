@@ -43,6 +43,23 @@ public class LoginBean {
         }
     }
 
+    
+    public String getPassword(String email) {
+
+        try {
+            this.stmt = con.createStatement();
+            ResultSet resultSet = stmt.executeQuery("SELECT password from giftTaker where email='" + email + "';");
+
+            while (resultSet.next()) {
+                if (resultSet != null) {
+                    this.correctPassword = resultSet.getString(1);
+                    return correctPassword;
+                }          }
+        } catch (SQLException ex) {
+            System.err.println(new java.util.Date() + " : " + ex.getMessage());
+        }
+        return "";
+    }
     public boolean checkPassword(String email, String password) {
 
         try {

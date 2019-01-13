@@ -52,8 +52,23 @@ public class NewFriendTransactionServlet extends HttpServlet {
             alias = request.getParameter("alias");
             System.out.println("Give to " + friend);
 
-            callAdminTransactionNewUserBean(friend, amount, alias);
             if ((amount != null && !amount.isEmpty()) && (alias != null && !alias.isEmpty())) {
+                
+                LoginBean lb = new LoginBean();
+                lb.init();
+                String password = lb.getPassword(friend);
+                lb.closeConnection();
+                            callAdminTransactionNewUserBean(friend, amount, alias);
+                            callAdminTransactionExistingUserBean(friend, String.valueOf(amount), alias);
+
+                
+                          MailService ms = new MailService();
+                ms.setUSER_NAME("aneventapplication@gmail.com");
+                ms.setPASSWORD("ab1234cd");
+                ms.setRECIPIENT(friend);
+                ms.setSubject("Your receipt");
+                ms.setBody("You have a gift at MyGift.com! Use your password "+password+" to login to http://localhost:8080/MyGift/login.jsp");
+                ms.sendReceipt();
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                 // RequestDispatcher rdServlet = request.getRequestDispatcher("BookTripFormHandler");
                 // request.setAttribute("message", "Exchange rate ");
@@ -107,13 +122,25 @@ public class NewFriendTransactionServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void callAdminTransactionNewUserBean(String email, String amount, String alias) {
+    private int callAdminTransactionNewUserBean(String email, String amount, String alias) {
         Random rn = new Random();
 
         AdminTransactionBean arb = new AdminTransactionBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
         arb.init();
         int password = rn.nextInt(1000);
         arb.insertNewUserStatement(email, Float.valueOf(amount), password, false, false, alias);
+        arb.closeConnection();
+        
+        return password;
+    }
+        private void callAdminTransactionExistingUserBean(String emailReceiver, String amount, String alias) {
+        Random rn = new Random();
+
+        AdminTransactionBean arb = new AdminTransactionBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
+        arb.init();
+        float giftAmount = Float.valueOf(amount);
+        int password = rn.nextInt(1000);
+        arb.insertExistingUserStatement(emailReceiver, giftAmount, password, false, false, alias);
         arb.closeConnection();
     }
 }

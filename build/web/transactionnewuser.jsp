@@ -18,7 +18,7 @@
             .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
             .fa-anchor,.fa-coffee {font-size:200px}
         </style>
-        <title>Gift to new user</title>
+        <title>Gift to a new user</title>
     </head>
     <body>
         <header class="w3-container w3-red w3-center" style="padding:128px 16px">

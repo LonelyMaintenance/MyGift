@@ -49,6 +49,10 @@ public class LoginServlet extends HttpServlet {
                 // request.setAttribute("message", "Exchange rate ");
                 request.setAttribute("login", login);
                 request.setAttribute("message", "You are logged in");
+                              try (PrintStream print = new PrintStream(new FileOutputStream("loggedIn.txt"))) {
+    print.print(login);
+    
+}
                 Cookie receiverCookie = new Cookie(("user"), login);
                 //setting cookie to expiry in 30 mins
                 receiverCookie.setMaxAge(30 * 60);
