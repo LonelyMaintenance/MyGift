@@ -4,6 +4,8 @@
     Author     : nikolaj
 --%>
 
+<%@page import="java.io.File"%>
+<%@page import="java.util.Scanner"%>
 <%@page import="bean.AdminTransactionBean"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>,
@@ -25,24 +27,17 @@
         <header class="w3-container w3-red w3-center" style="padding:128px 16px">
             <h1 class="w3-margin w3-jumbo">Menu Customer</h1>
         <%
-            String email = null;
-            Cookie[] cookies = request.getCookies();
-            if (cookies != null) {
-                for (Cookie cookie : cookies) {
-                    
-                    if (cookie.getName().contains("user")) {
-                        email =  cookie.getValue();
-            AdminTransactionBean agb = new AdminTransactionBean();
+AdminTransactionBean agb = new AdminTransactionBean();
             agb.init();
-            float accountValue = agb.getAccountValueStatement(email);
+                   Scanner scanner = new Scanner(new File("loggedIn.txt"), "UTF-8");
+        String user = scanner.useDelimiter("\\A").next();
+        scanner.close(); // Put this call in a finally block
+            float accountValue = agb.getAccountValueStatement(user);
             
             out.println(String.format("Money on you account %s<br><br>", String.valueOf(accountValue)));
 
                     
 
-                }
-            }
-            }
             
             %>
         
