@@ -52,11 +52,11 @@ public final class login_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Lato\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Montserrat\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n");
-      out.write("        <style>\n");
-      out.write("            body,h1,h2,h3,h4,h5,h6 {font-family: \"Lato\", sans-serif}\n");
-      out.write("            .w3-bar,h1,button {font-family: \"Montserrat\", sans-serif}\n");
-      out.write("            .fa-anchor,.fa-coffee {font-size:200px}\n");
-      out.write("        </style>\n");
+      out.write("                        <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n");
+      out.write("          <ul>\n");
+      out.write("            <ul><a href=\"index.html\">Main</a></ul>\n");
+      out.write("            \n");
+      out.write("        </ul>\n");
       out.write("        <title>MyGift Login Page</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");

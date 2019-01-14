@@ -140,7 +140,7 @@ public class NewFriendTransactionServlet extends HttpServlet {
         arb.init();
         float giftAmount = Float.valueOf(amount);
         int password = rn.nextInt(1000);
-        arb.insertExistingUserStatement(emailReceiver, giftAmount, password, false, false, alias);
+        arb.insertExistingUserStatement(emailReceiver, giftAmount, alias);
         arb.closeConnection();
     }
 }

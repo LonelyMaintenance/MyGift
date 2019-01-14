@@ -16,18 +16,20 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-            body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-            .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-            .fa-anchor,.fa-coffee {font-size:200px}
-        </style>
+                        <link rel="stylesheet" type="text/css" href="styles.css">
+          <ul>
+            <ul><a href="index.html">Main</a></ul>
+            <ul><a href="logout.jsp">Log out</a></ul>
+            <ul><a href="menuadmin.jsp">Back to Admin Menu</a></ul>
+        </ul>
         <title>Transaction list</title>
     </head>
     <body>
         <header class="w3-container w3-red w3-center">
             <h1 class="w3-margin w3-jumbo w3-left-align">List of Transactions</h1>
             
-                    <a href="menuadmin.jsp">Back to Admin Menu</a><br>
+                
+
 
    
 <%  

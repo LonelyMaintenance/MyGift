@@ -145,8 +145,7 @@ public class TransactionServlet extends HttpServlet {
         AdminTransactionBean arb = new AdminTransactionBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
         arb.init();
         float giftAmount = Float.valueOf(amount);
-        int password = rn.nextInt(1000);
-        arb.insertExistingUserStatement(emailReceiver, giftAmount, password, false, false, alias);
+        arb.insertExistingUserStatement(emailReceiver, giftAmount, alias);
         arb.closeConnection();
     }
 }

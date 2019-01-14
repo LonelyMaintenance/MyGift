@@ -65,7 +65,7 @@ public class UserAdmin {
         int password = rn.nextInt(1000);
         System.out.println("Enter your alias");
         String alias = s.nextLine();
-        arb.insertExistingUserStatement(email, amount, password, false, false, alias);
+        arb.insertExistingUserStatement(email, amount, alias);
         arb.closeConnection();
     }
 

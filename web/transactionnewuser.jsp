@@ -13,16 +13,19 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-            body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-            .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-            .fa-anchor,.fa-coffee {font-size:200px}
-        </style>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+
         <title>Gift to a new user</title>
+        <ul>
+            <ul><a href="logout.jsp">Log out</a></ul>
+            
+        </ul>
     </head>
     <body>
+        
+
         <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-            <h1 class="w3-margin w3-jumbo">Gift a new user</h1>
+            <h1 class="w3-margin w3-jumbo">Gift to a new user</h1>
           <form action="NewFriendTransactionServlet" method="POST">
               <label>Your friends email</label><br>
               <input type="text" name="emailReceiver" value="" /><br>

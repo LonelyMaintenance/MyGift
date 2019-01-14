@@ -53,13 +53,9 @@ public class AdminTransactionBean {
 
     }
 
-    public void insertExistingUserStatement(String email, float amount, int password, boolean isAdmin, boolean isInactive, String alias) {
+    public void insertExistingUserStatement(String email, float amount, String alias) {
         try {
-            //Creates new customer account
-            this.stmt = (PreparedStatement) con.prepareStatement("UPDATE giftTaker SET moneyOnAccount=moneyOnAccount+? WHERE email=?;");
-            stmt.setFloat(1, amount);
-            stmt.setString(2, email);
-            stmt.executeUpdate();
+
             //Creates alias
             this.stmt = (PreparedStatement) con.prepareStatement("INSERT INTO giftGiver VALUES(?);");
             stmt.setString(1, alias);
@@ -95,10 +91,10 @@ public class AdminTransactionBean {
             stmt.setString(1, email);
             stmt.setFloat(2, 0);
             stmt.setString(3, String.valueOf(password));
-            stmt.setBoolean(4, false);
-            stmt.setBoolean(5, false);
+            stmt.setBoolean(4, isAdmin);
+            stmt.setBoolean(5, isInactive);
             stmt.executeUpdate();
-
+            
         } catch (SQLException ex) {
         }
     }
