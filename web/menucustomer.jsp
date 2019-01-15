@@ -2,6 +2,11 @@
     Document   : menucustomer
     Created on : Jan 9, 2019, 10:05:24 PM
     Author     : nikolaj
+
+Description of file: Sida för att visa meny för kund.
+
+Visar hur mycket som finns på användarens konto från db (via bean).
+Länkar till: Ta emot gåva, se historik över gåvor till denna kund, och till att ge en gåva till en vän.
 --%>
 
 <%@page import="java.io.File"%>
@@ -12,10 +17,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
                         <link rel="stylesheet" type="text/css" href="styles.css">
           <ul>
             <ul><a href="index.html">Main</a></ul>
@@ -24,14 +26,14 @@
         <title>Menu Customer</title>
     </head>
     <body>
-        <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-            <h1 class="w3-margin w3-jumbo">Menu Customer</h1>
+        <header>
+            <h1>Menu Customer</h1>
         <%
 AdminTransactionBean agb = new AdminTransactionBean();
             agb.init();
                    Scanner scanner = new Scanner(new File("loggedIn.txt"), "UTF-8");
         String user = scanner.useDelimiter("\\A").next();
-        scanner.close(); // Put this call in a finally block
+        scanner.close(); 
             float accountValue = agb.getAccountValueStatement(user);
             
             out.println(String.format("Money on you account %s<br><br>", String.valueOf(accountValue)));
@@ -46,8 +48,6 @@ AdminTransactionBean agb = new AdminTransactionBean();
             <a href="giftlist.jsp">Cash in gifts</a><br><br>
       
         </header>
-            <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
-            <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-        </footer>
+
     </body>
 </html>

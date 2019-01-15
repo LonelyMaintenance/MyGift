@@ -48,10 +48,7 @@ public final class transaction_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Lato\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Montserrat\">\n");
-      out.write("        <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n");
+      out.write("\n");
       out.write("                        <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">\n");
       out.write("          <ul>\n");
       out.write("            <ul><a href=\"index.html\">Main</a></ul>\n");
@@ -60,8 +57,8 @@ public final class transaction_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>Send gift to friend</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
-      out.write("        <header class=\"w3-container w3-red w3-center\" style=\"padding:128px 16px\">\n");
-      out.write("            <h1 class=\"w3-margin w3-jumbo\">Send gift to friend</h1>\n");
+      out.write("        <header>\n");
+      out.write("            <h1>Send gift to friend</h1>\n");
       out.write("        \n");
       out.write("\n");
       out.write("                              <form action=\"TransactionServlet\" method=\"POST\">\n");
@@ -99,9 +96,7 @@ public final class transaction_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("              <input type=\"submit\" value=\"Ok\" name=\"submit\" />\n");
       out.write("          </form>\n");
       out.write("        </header>\n");
-      out.write("        <footer class=\"w3-container w3-padding-64 w3-center w3-opacity\">  \n");
-      out.write("            <p>Powered by <a href=\"https://www.w3schools.com/w3css/default.asp\" target=\"_blank\">w3.css</a></p>\n");
-      out.write("        </footer>\n");
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

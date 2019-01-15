@@ -1,8 +1,6 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
- */
+Används för testning av tjänst
+*/
 package web;
 
 import bean.AdminGiftBean;
@@ -30,14 +28,13 @@ public class UserAdmin {
 
     public static void main(String[] args) throws SQLException {
         UserAdmin ta = new UserAdmin();
-        //ta.callAdminTransactionNewUserBean();
-        // ta.checkGivenPassword("nikolaj.mansson@gmail.com", "1234");
+
         System.out.println(ta.checkIfEnoughMoneyOnAccountBean("nikolaj.mansson@gmail.com", "400"));
     }
 
     private boolean checkIfEnoughMoneyOnAccountBean(String email, String eventCost) throws SQLException {
 
-        AdminGiftBean agb = new AdminGiftBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
+        AdminGiftBean agb = new AdminGiftBean();
         agb.init();
 
         boolean check = agb.getAccountStatement(email, eventCost);
@@ -56,7 +53,7 @@ public class UserAdmin {
         Random rn = new Random();
 
         s = new Scanner(System.in);
-        AdminTransactionBean arb = new AdminTransactionBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
+        AdminTransactionBean arb = new AdminTransactionBean(); 
         arb.init();
         System.out.println("Enter email of gift receiver");
         String email = s.nextLine();
@@ -73,7 +70,7 @@ public class UserAdmin {
         Random rn = new Random();
 
         s = new Scanner(System.in);
-        AdminTransactionBean arb = new AdminTransactionBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
+        AdminTransactionBean arb = new AdminTransactionBean(); 
         arb.init();
         System.out.println("Enter email of gift receiver");
         String email = s.nextLine();
@@ -88,7 +85,7 @@ public class UserAdmin {
 
     private void checkGivenPassword(String email, String password) {
 
-        LoginBean lb = new LoginBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
+        LoginBean lb = new LoginBean(); 
         lb.init();
         boolean check = lb.checkPassword(email, password);
         if (check == true) {

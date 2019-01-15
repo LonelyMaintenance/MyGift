@@ -2,6 +2,9 @@
     Document   : transaction
     Created on : Dec 28, 2018, 6:16:27 PM
     Author     : nikolaj, Victor
+
+Description of file: Sida för att ge en gåva till en vän som inte sedan tidigare är registrerad på webbtjänsten.
+Mail kommer att skickas till denna vän, med en länk till sidan och ett lösenord för att hämta ut sin gåva.
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,10 +12,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="styles.css">
 
         <title>Gift to a new user</title>
@@ -24,21 +23,19 @@
     <body>
         
 
-        <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-            <h1 class="w3-margin w3-jumbo">Gift to a new user</h1>
+        <header>
+            <h1>Gift to a new user</h1>
           <form action="NewFriendTransactionServlet" method="POST">
               <label>Your friends email</label><br>
               <input type="text" name="emailReceiver" value="" /><br>
               <label>Amount to give</label><br>
               <input type="text" name="amount" value="" /><br>
               <label>Your alias</label><br>
-              <input type="text" name="alias" value="" /><br>
+              <input type="text" name="alias" value="" /><br><br>
               <input type="submit" value="Give" name="submit" />
         </form>
           <% //out.println("<b>"+request.getAttribute("message") + "</b>"); %>
         </header>
-        <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
-            <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-        </footer>
+
     </body>
 </html>

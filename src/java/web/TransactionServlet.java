@@ -1,7 +1,5 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
+Hanterar gåva till vän, som sedan tidigare är registrerade användare vid webbtjänsten.
  */
 package web;
 
@@ -33,20 +31,10 @@ public class TransactionServlet extends HttpServlet {
 
     String friend = null;
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             String amount = null;
             amount = request.getParameter("amount");
             String alias = null;
@@ -60,14 +48,12 @@ public class TransactionServlet extends HttpServlet {
  
                 if ((amount != null && !amount.isEmpty()) && (alias != null && !alias.isEmpty()) && (friend != null && !friend.isEmpty())) {
                     RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                    // RequestDispatcher rdServlet = request.getRequestDispatcher("BookTripFormHandler");
-                    // request.setAttribute("message", "Exchange rate ");
+   
                     request.setAttribute("message", "Money transfered to your friend");
                     rd.forward(request, response);
                 } else {
                     RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                     request.setAttribute("message", "Transfer did not go through");
-                    //request.setAttribute("login", login);
                     rd.forward(request, response);
                 }
             }

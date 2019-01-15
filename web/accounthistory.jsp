@@ -2,6 +2,10 @@
     Document   : accounthistory
     Created on : Jan 10, 2019, 4:53:02 PM
     Author     : nikolaj, Victor
+
+Description of file: Sida för att visa lista över gåvor till inloggad användare.
+Kollar först vilken användare som är inloggad enligt cookie.
+Presenterar sedan resultat från db (via bean), om vilka gåvor som getts till denna användare.
 --%>
 
 <%@page import="java.util.ArrayList"%>
@@ -11,10 +15,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
                 <link rel="stylesheet" type="text/css" href="styles.css">
 
                 <ul>
@@ -24,8 +24,8 @@
 
     </head>
     <body>
-        <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-            <h1 class="w3-margin w3-jumbo">Account History</h1>
+        <header>
+            <h1>Account History</h1>
         <%
             String email = null;
             Cookie[] cookies = request.getCookies();
@@ -54,8 +54,6 @@
                
 
         </header>
-        <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
-            <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-        </footer>
+
         </body>
 </html>

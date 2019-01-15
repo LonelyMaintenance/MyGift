@@ -1,7 +1,7 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
+Används då en användare som sedan tidigare inte har varit registrerad ska få en gåva.
+Då genreras ett slumplösenord till denna användare, och en e-post med lösenord
+och uppgift om gåva skickas till denna nya användare.
  */
 package web;
 
@@ -30,20 +30,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "NewFriendTransactionServlet", urlPatterns = {"/NewFriendTransactionServlet"})
 public class NewFriendTransactionServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             String friend = null;
             friend = request.getParameter("emailReceiver");
             String amount = null;
@@ -70,14 +61,12 @@ public class NewFriendTransactionServlet extends HttpServlet {
                 ms.setBody("You have a gift at MyGift.com! Use your password "+password+" to login to http://localhost:8080/MyGift/login.jsp");
                 ms.sendReceipt();
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
-                // RequestDispatcher rdServlet = request.getRequestDispatcher("BookTripFormHandler");
-                // request.setAttribute("message", "Exchange rate ");
+
                 request.setAttribute("message", "Money transfered to your friend");
                 rd.forward(request, response);
             } else {
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
                 request.setAttribute("message", "Transfer did not go through");
-                //request.setAttribute("login", login);
                 rd.forward(request, response);
             }
         }
@@ -136,7 +125,7 @@ public class NewFriendTransactionServlet extends HttpServlet {
         private void callAdminTransactionExistingUserBean(String emailReceiver, String amount, String alias) {
         Random rn = new Random();
 
-        AdminTransactionBean arb = new AdminTransactionBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
+        AdminTransactionBean arb = new AdminTransactionBean(); 
         arb.init();
         float giftAmount = Float.valueOf(amount);
         int password = rn.nextInt(1000);

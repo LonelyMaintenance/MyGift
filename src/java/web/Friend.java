@@ -1,9 +1,7 @@
 package web;
 
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
+Klass för objektet Friend - alltså alla användare som finns på denna webbtjänst (som därmed kan ta emot gåva från andra)
  */
 /**
  *
