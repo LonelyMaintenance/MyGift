@@ -33,7 +33,10 @@ public class AdminTransactionBean {
             Class.forName("com.mysql.jdbc.Driver");
             this.con = DriverManager.getConnection("jdbc:mysql://localhost/mygift?autoReconnect=true&useSSL=false", "root", "root");
         } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
         } catch (SQLException ex) {
+            ex.printStackTrace();
+            
         }
     }
 //Mottagare visar att denna vill ta en gåva
@@ -65,6 +68,8 @@ public class AdminTransactionBean {
             stmt.executeUpdate();
 
         } catch (SQLException ex) {
+            ex.printStackTrace();
+            
         }
     }
 //Tar bort pengar från konto vid köp
@@ -77,6 +82,8 @@ public class AdminTransactionBean {
             stmt.executeUpdate();
 
         } catch (SQLException ex) {
+            ex.printStackTrace();
+
         }
     }
 //Lägger in en ny användare
@@ -92,6 +99,8 @@ public class AdminTransactionBean {
             stmt.executeUpdate();
             
         } catch (SQLException ex) {
+            ex.printStackTrace();
+
         }
     }
     //Hämtar uppgift om hur mycket pengar som finns på konto
@@ -99,6 +108,7 @@ public class AdminTransactionBean {
         float accountValue = 0;
 
         try {
+
             this.qstmt = con.createStatement();
             ResultSet resultSet = qstmt.executeQuery("SELECT moneyOnAccount FROM giftTaker WHERE email='" + email + "'");
             while (resultSet.next()) {
@@ -108,6 +118,8 @@ public class AdminTransactionBean {
             con.close();
 
         } catch (SQLException ex) {
+            ex.printStackTrace();
+
         }
         return accountValue;
     }
@@ -118,6 +130,9 @@ public class AdminTransactionBean {
             stmt.close();
             con.close();
         } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+
         }
     }
 }

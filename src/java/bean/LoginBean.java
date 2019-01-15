@@ -34,7 +34,11 @@ public class LoginBean {
             Class.forName("com.mysql.jdbc.Driver");
             this.con = DriverManager.getConnection("jdbc:mysql://localhost/mygift?autoReconnect=true&useSSL=false", "root", "root");
         } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+
         } catch (SQLException ex) {
+            ex.printStackTrace();
+
         }
     }
 
@@ -105,6 +109,8 @@ public class LoginBean {
             stmt.close();
             con.close();
         } catch (SQLException ex) {
+            ex.printStackTrace();
+
         }
     }
 }

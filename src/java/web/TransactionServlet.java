@@ -102,14 +102,11 @@ public class TransactionServlet extends HttpServlet {
  
                 if ((amount != null && !amount.isEmpty()) && (alias != null && !alias.isEmpty()) && (friend != null && !friend.isEmpty())) {
                     RequestDispatcher rd = request.getRequestDispatcher("giftgiven.jsp");
-                    // RequestDispatcher rdServlet = request.getRequestDispatcher("BookTripFormHandler");
-                    // request.setAttribute("message", "Exchange rate ");
-         //           request.setAttribute("message", "Money transfered to your friend");
+         
                     rd.forward(request, response);
                 } else {
                     RequestDispatcher rd = request.getRequestDispatcher("gifterror.jsp");
-         //           request.setAttribute("message", "Transfer did not go through");
-                    //request.setAttribute("login", login);
+     
                     rd.forward(request, response);
                 }
            
@@ -128,7 +125,7 @@ public class TransactionServlet extends HttpServlet {
     private void callAdminTransactionExistingUserBean(String emailReceiver, String amount, String alias) {
         Random rn = new Random();
 
-        AdminTransactionBean arb = new AdminTransactionBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
+        AdminTransactionBean arb = new AdminTransactionBean(); 
         arb.init();
         float giftAmount = Float.valueOf(amount);
         arb.insertExistingUserStatement(emailReceiver, giftAmount, alias);

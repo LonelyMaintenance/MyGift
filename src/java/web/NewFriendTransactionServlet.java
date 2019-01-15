@@ -49,11 +49,11 @@ public class NewFriendTransactionServlet extends HttpServlet {
                 lb.init();
                 String password = lb.getPassword(friend);
                 lb.closeConnection();
-                            callAdminTransactionNewUserBean(friend, amount, alias);
-                            callAdminTransactionExistingUserBean(friend, String.valueOf(amount), alias);
-
+                callAdminTransactionNewUserBean(friend, amount, alias);
+                callAdminTransactionExistingUserBean(friend, String.valueOf(amount), alias);
                 
-                          MailService ms = new MailService();
+                
+                MailService ms = new MailService();
                 ms.setUSER_NAME("aneventapplication@gmail.com");
                 ms.setPASSWORD("ab1234cd");
                 ms.setRECIPIENT(friend);

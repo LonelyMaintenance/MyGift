@@ -35,7 +35,9 @@ public class AdminGiftBean {
             Class.forName("com.mysql.jdbc.Driver");
             this.con = DriverManager.getConnection("jdbc:mysql://localhost/mygift?autoReconnect=true&useSSL=false", "root", "root");
         } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
         } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
 //Hämtar uppgift om pengar på konto motsvarar kostnad för event
@@ -154,7 +156,7 @@ public class AdminGiftBean {
             stmt.close();
             con.close();
         } catch (SQLException ex) {
-
+            ex.printStackTrace();
         }
     }
 }
