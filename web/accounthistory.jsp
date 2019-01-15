@@ -19,7 +19,9 @@ Presenterar sedan resultat från db (via bean), om vilka gåvor som getts till d
 
                 <ul>
             <ul><a href="logout.jsp">Log out</a></ul>
-        </ul>
+            <ul><a href="menucustomer.jsp">Menu</a></ul>
+
+                </ul>
         <title>Account History</title>
 
     </head>

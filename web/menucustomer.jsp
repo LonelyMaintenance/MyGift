@@ -20,7 +20,6 @@ Länkar till: Ta emot gåva, se historik över gåvor till denna kund, och till 
 
                         <link rel="stylesheet" type="text/css" href="styles.css">
           <ul>
-            <ul><a href="index.html">Main</a></ul>
             <ul><a href="logout.jsp">Log out</a></ul>
         </ul>
         <title>Menu Customer</title>

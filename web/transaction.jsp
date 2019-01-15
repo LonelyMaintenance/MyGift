@@ -16,7 +16,7 @@ Användare ska här ange vilket alias som denna ska skicka pengar som, och hur m
 
                         <link rel="stylesheet" type="text/css" href="styles.css">
           <ul>
-            <ul><a href="index.html">Main</a></ul>
+            <ul><a href="menucustomer.jsp">Menu</a></ul>
             <ul><a href="logout.jsp">Log out</a></ul>
         </ul>
         <title>Send gift to friend</title>

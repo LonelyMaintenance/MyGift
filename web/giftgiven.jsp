@@ -17,7 +17,7 @@ Description of file: Sida för att visa meddelande om transaktion har kunnat gen
         <title>Transaction successful</title>
                         <ul>
             <ul><a href="logout.jsp">Log out</a></ul>
-            <ul><a href="transactionnewuser.jsp">Give a gift to a new user</a>  </ul>
+            <ul><a href="menucustomer.jsp">Menu</a>  </ul>
         </ul>  
     </head>
     <body>
