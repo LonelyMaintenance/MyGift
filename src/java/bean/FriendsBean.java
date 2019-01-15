@@ -1,7 +1,5 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
+Processar användarens order vid användning lista över användare
  */
 package bean;
 
@@ -23,9 +21,9 @@ import web.Friend;
 @SessionScoped
 public class FriendsBean implements Serializable {
 
-    private List<Friend> data; // todo list data
-    private String friend; // the currently selected item value
-    private String msg; // status message
+    private List<Friend> data; 
+    private String friend; 
+    private String msg; 
     Friend f;
     ArrayList<String> friendList;
     String chosen;
@@ -34,20 +32,12 @@ public class FriendsBean implements Serializable {
 
         this.friendList = getFriendList();
         loadData();
-        // select the first item in the list
         this.f = data.get(0);
         setFriend(f.getName());
         setMessage(f.getName() + " selected.");
     }
 
     private void loadData() {
-        /*
-        data = new ArrayList<>();
-        ArrayList<String> eventList = getEventList();
-        for(int i = 0; i < eventList.size(); i++){
-        Event e = new Event(eventList.get(i), String.format("%s description", eventList.get(i)));
-        data.add(e);
-        }*/
 
         data = new ArrayList<>();
 
@@ -55,18 +45,6 @@ public class FriendsBean implements Serializable {
             Friend f = new Friend(friendList.get(i), String.format("%s description", friendList.get(i)));
             data.add(f);
         }
-        /*
-        data = new ArrayList<>();
-        Event e = new Event("item 1", "item 1 description");
-        data.add(e);
-        e = new Event("item 2", "item 2 description");
-        data.add(e);
-        e = new Event("item 3", "item 3 description");
-        data.add(e);
-        e = new Event("item 4", "item 4 description");
-        data.add(e);
-         */
-        //            AdminEventBean adb = new AdminEventBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
 
     }
 
@@ -105,7 +83,7 @@ public class FriendsBean implements Serializable {
     }
 
     public ArrayList<String> getFriendList() throws SQLException {
-        AdminFriendBean afb = new AdminFriendBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
+        AdminFriendBean afb = new AdminFriendBean(); 
         afb.init();
         ArrayList<String> friendList = afb.getFriendsStatement();
         for (int i = 0; i < friendList.size(); i++) {

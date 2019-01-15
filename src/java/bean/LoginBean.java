@@ -1,7 +1,5 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
+Används för att hantera inloggning gentemot db
  */
 package bean;
 
@@ -30,10 +28,7 @@ public class LoginBean {
     String adminMail = null;
         boolean isAdmin = false;
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-
-    //In the real world, this method should have madtoe a call to database objects to query data
+//Initierar JDBC-Driver
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -43,7 +38,7 @@ public class LoginBean {
         }
     }
 
-    
+    //Hämtar alla lösenord från db
     public String getPassword(String email) {
 
         try {
@@ -60,6 +55,7 @@ public class LoginBean {
         }
         return "";
     }
+    //Kontrollerar om email stämmer överens med givet lösenord
     public boolean checkPassword(String email, String password) {
 
         try {
@@ -80,7 +76,7 @@ public class LoginBean {
         }
         return false;
     }
-
+//Kontrollerar om användarkonto har adminbehörighet
     public boolean checkIfAdmin(String email) {
 
         try {
@@ -103,7 +99,7 @@ public class LoginBean {
         return false;
     }
     
-
+//Stänger uppkoppling
     public void closeConnection() {
         try {
             stmt.close();

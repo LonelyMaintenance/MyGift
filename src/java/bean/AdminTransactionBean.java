@@ -1,7 +1,5 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
+Hanterar transaktioner mellan användare i db
  */
 package bean;
 
@@ -29,9 +27,7 @@ public class AdminTransactionBean {
     Statement qstmt;
     Statement searchStmt;
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-    //In the real world, this method should have madtoe a call to database objects to query data
+//Initierar JDBC-driver
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -40,7 +36,7 @@ public class AdminTransactionBean {
         } catch (SQLException ex) {
         }
     }
-
+//Mottagare visar att denna vill ta en gåva
     public void activateGift(String idOfGift, String giftTaker, String amount) throws SQLException {
         this.stmt = (PreparedStatement) con.prepareStatement("UPDATE gift SET activated=1 WHERE id=?;");
         stmt.setInt(1, Integer.valueOf(idOfGift));
@@ -52,7 +48,7 @@ public class AdminTransactionBean {
         stmt.executeUpdate();
 
     }
-
+//Registrerar gåva till person som är använd sen tidigare
     public void insertExistingUserStatement(String email, float amount, String alias) {
         try {
 
@@ -71,7 +67,7 @@ public class AdminTransactionBean {
         } catch (SQLException ex) {
         }
     }
-
+//Tar bort pengar från konto vid köp
     public void withdrawFromUserStatement(String email, String amount) {
         try {
             //Creates new customer account
@@ -83,7 +79,7 @@ public class AdminTransactionBean {
         } catch (SQLException ex) {
         }
     }
-
+//Lägger in en ny användare
     public void insertNewUserStatement(String email, float amount, int password, boolean isAdmin, boolean isInactive, String alias) {
         try {
             //Creates new customer account
@@ -98,6 +94,7 @@ public class AdminTransactionBean {
         } catch (SQLException ex) {
         }
     }
+    //Hämtar uppgift om hur mycket pengar som finns på konto
     public float getAccountValueStatement(String email) {
         float accountValue = 0;
 
@@ -115,7 +112,7 @@ public class AdminTransactionBean {
         return accountValue;
     }
 
-
+//Stänger uppkoppling
     public void closeConnection() {
         try {
             stmt.close();

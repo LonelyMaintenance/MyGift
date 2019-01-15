@@ -29,9 +29,7 @@ public class AdminGiftBean {
     PreparedStatement preStmt;
     Statement stmt;
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-    //In the real world, this method should have madtoe a call to database objects to query data
+//Initierar JDBC-driver
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -40,7 +38,7 @@ public class AdminGiftBean {
         } catch (SQLException ex) {
         }
     }
-
+//Hämtar uppgift om pengar på konto motsvarar kostnad för event
     public boolean getAccountStatement(String email, String eventCost) throws SQLException {
 
         float amount = 0;
@@ -65,7 +63,7 @@ public class AdminGiftBean {
 
         return false;
     }
-
+//Hämtar uppgift om gåva
     public List<GiftList> getGiftsStatement(String email) throws SQLException {
         List<GiftList> myList = new ArrayList<GiftList>();
 
@@ -86,7 +84,6 @@ public class AdminGiftBean {
                     GiftList gl;
                     gl = new GiftList(id, giftName, giftTaker, alias);
                     myList.add(gl);
-                    //giftList.add(giftName);
                 }
             }
         } catch (SQLException ex) {
@@ -95,7 +92,7 @@ public class AdminGiftBean {
 
         return myList;
     }
-
+//Hämtar alla gåvor från db
     public ArrayList<String> getTransactionsStatement() throws SQLException {
         ArrayList<String> list = new ArrayList<>();
 
@@ -123,7 +120,7 @@ public class AdminGiftBean {
 
         return list;
     }
-    
+    //Hämtar logg över alla gåvor
     public ArrayList<String> getTransactionsHistory(String email) throws SQLException {
         ArrayList<String> list = new ArrayList<>();
 
@@ -151,7 +148,7 @@ public class AdminGiftBean {
         return list;
     }
 
-
+//Stänger uppkoppling till db
     public void closeConnection() {
         try {
             stmt.close();

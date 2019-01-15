@@ -1,7 +1,5 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
+Hämtar alla användare från db 
  */
 package bean;
 
@@ -27,9 +25,7 @@ public class AdminFriendBean {
     PreparedStatement preStmt;
     Statement stmt;
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
-    //In the real world, this method should have madtoe a call to database objects to query data
+//Initierar JDBC-driver
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -38,7 +34,7 @@ public class AdminFriendBean {
         } catch (SQLException ex) {
         }
     }
-
+//Hämtar användare från db
     public ArrayList<String> getFriendsStatement() throws SQLException {
         ArrayList<String> friendList = new ArrayList<>();
 
@@ -59,7 +55,7 @@ public class AdminFriendBean {
 
         return friendList;
     }
-
+//Stänger uppkoppling
     public void closeConnection() {
         try {
             stmt.close();

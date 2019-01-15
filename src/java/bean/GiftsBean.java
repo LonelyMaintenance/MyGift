@@ -1,14 +1,8 @@
 /*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
+Används för att processa användarens order gentemot lista av gåvor
  */
 package bean;
-/*
-* To change this license header, choose License Headers in Project Properties.
-* To change this template file, choose Tools | Templates
-* and open the template in the editor.
- */
+
 
 
 import java.io.File;
@@ -32,9 +26,9 @@ import web.GiftList;
 @SessionScoped
 public class GiftsBean implements Serializable {
 
-    private List<Gift> data; // todo list data
-    private String gift; // the currently selected item value
-    private String msg; // status message
+    private List<Gift> data; 
+    private String gift; 
+    private String msg; 
     Gift g;
     List<GiftList> giftList;
     GiftList chosen;
@@ -54,13 +48,7 @@ try{
     }
 
     private void loadData() {
-        /*
-        data = new ArrayList<>();
-        ArrayList<String> eventList = getEventList();
-        for(int i = 0; i < eventList.size(); i++){
-        Event e = new Event(eventList.get(i), String.format("%s description", eventList.get(i)));
-        data.add(e);
-        }*/
+
 
         data = new ArrayList<>();
 
@@ -68,19 +56,7 @@ try{
             Gift g = new Gift(giftList.get(i).getId(), giftList.get(i).getAmount(), giftList.get(i).getGiftTaker(), giftList.get(i).getGiver());
             data.add(g);
         }
-        /*
-        data = new ArrayList<>();
-        Event e = new Event("item 1", "item 1 description");
-        data.add(e);
-        e = new Event("item 2", "item 2 description");
-        data.add(e);
-        e = new Event("item 3", "item 3 description");
-        data.add(e);
-        e = new Event("item 4", "item 4 description");
-        data.add(e);
-         */
-        //            AdminEventBean adb = new AdminEventBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
-
+    
     }
 
     public List<Gift> getData() {
@@ -99,7 +75,6 @@ try{
         this.gift = t;
     }
 
-    // value change listener for list item selection
     public void valueChanged(ValueChangeEvent v) {
         this.chosen = (GiftList) v.getNewValue();
         setMessage(chosen + " selected.");
@@ -109,7 +84,6 @@ try{
         setMessage(chosen.getAmount() + " added to cache.");
         activateGift(chosen.getId(), chosen.getGiftTaker(), chosen.getAmount());
         giftList.remove(chosen);
-        //Todo: Lägg in kod för att aktivera gåva och lägg till pengar på konto
 
     }
 
@@ -122,7 +96,7 @@ try{
     }
 
     public void activateGift(String id, String giftTaker, String amount) throws SQLException, FileNotFoundException {
-        AdminTransactionBean atb = new AdminTransactionBean(); //(TeacherInforRemRemote) Naming.lookup ("ava:global/CourseEJB/beans/TeacherInfoRem");
+        AdminTransactionBean atb = new AdminTransactionBean(); 
         atb.init();
         atb.activateGift(id, giftTaker, amount);
         atb.closeConnection();
