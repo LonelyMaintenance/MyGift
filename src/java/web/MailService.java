@@ -1,6 +1,7 @@
 /*
 Används för att skicka e-post till ny användare med dennas lösenord.
-
+Källa: Inspirerad av instruktioner från
+https://stackoverflow.com/questions/46663/how-can-i-send-an-email-by-java-application-using-gmail-yahoo-or-hotmail
 */
 
 package web;
